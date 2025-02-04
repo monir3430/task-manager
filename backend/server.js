@@ -1,11 +1,20 @@
 const express = require("express");
 const cors = require("cors");
-require("dotenv").config(); // Load environment variables
+const dotenv = require("dotenv").config(); // Load environment variables
+
+const connectDB =  require("./db");
+
+
+
 const app = express();
+
+connectDB();
 
 // Middleware-------------------------
 app.use(cors()); // Solve CORS issues
 app.use(express.json()); // Parse JSON data
+
+
 
 // Test Route-------------------------
 app.get("/", (req, res) => {
